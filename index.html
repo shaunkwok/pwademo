@@ -17,7 +17,7 @@
 		  console.log('DOMContentLoaded');
 		  if ('serviceWorker' in navigator) {
 		  	console.log('serviceWorker in navigator');
-		    navigator.serviceWorker.register('/service-worker.js', { scope: './' })
+		    navigator.serviceWorker.register('service-worker.js', { scope: './' })
 		      .then(function(registration) {
 		        console.log('Service Worker 注册成功:', registration);
 		      })
