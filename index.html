@@ -12,5 +12,18 @@
     <h1>欢迎来到我的 PWA</h1>
     <script src="scripts/main.js"></script>
     <script src="service-worker.js" defer></script>
+    <script>
+		document.addEventListener('DOMContentLoaded', function() {  
+		  if ('serviceWorker' in navigator) {  
+		    navigator.serviceWorker.register('/service-worker.js', { scope: './' })  
+		      .then(function(registration) {  
+		        console.log('Service Worker 注册成功:', registration);  
+		      })  
+		      .catch(function(error) {  
+		        console.error('Service Worker 注册失败:', error);  
+		      });  
+		  }  
+		});
+    </script>
 </body>
 </html>
