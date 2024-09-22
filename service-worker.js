@@ -1,21 +1,16 @@
-self.addEventListener('install', function(event) {  
-  // 缓存一些文件  
-  event.waitUntil(  
-    caches.open('my-cache-name').then(function(cache) {  
-      return cache.addAll([  
+self.addEventListener('install', async event => {  
+    const cache = await caches.open('pwa-demo-cache');  
+    const urlsToCache = [  
+        '/',  
         '/styles/main.css',  
         '/scripts/main.js',  
-      ]);  
-    })  
-  );  
-});  
+        '/fav.png'
+    ];  
   
-self.addEventListener('fetch', function(event) {  
-  // 拦截和处理网络请求的逻辑  
-  event.respondWith(  
-    caches.match(event.request).then(function(response) {  
-      // 缓存中有请求的资源时，直接返回缓存中的资源  
-      return response || fetch(event.request);  
-    })  
-  );  
+    event.waitUntil(  
+        cache.addAll(urlsToCache)  
+            .then(() => {  
+                console.log('所有资源已缓存');  
+            })  
+    );  
 });
