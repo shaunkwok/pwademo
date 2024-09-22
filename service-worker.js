@@ -1,3 +1,4 @@
+console.log('service-worker.js loaded');
 self.addEventListener('install', async event => {
     console.log('Service Worker 安装中...');
     const cache = await caches.open('pwa-demo-cache');
